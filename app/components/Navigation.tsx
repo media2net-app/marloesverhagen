@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { content } from '@/app/data/content';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, ArrowRight, Menu, X } from 'lucide-react';
@@ -8,6 +8,54 @@ import Logo from './Logo';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOnLightSection, setIsOnLightSection] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const nav = document.querySelector('nav');
+      if (!nav) return;
+
+      const navRect = nav.getBoundingClientRect();
+      const navCenter = navRect.top + navRect.height / 2;
+      
+      // Find all white sections
+      const whiteSections = document.querySelectorAll('section.bg-white');
+      
+      // Check if nav center point is within any white section
+      let onLightSection = false;
+      
+      whiteSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        // Check if nav center is within the white section bounds
+        if (navCenter >= rect.top && navCenter <= rect.bottom) {
+          onLightSection = true;
+        }
+      });
+
+      setIsOnLightSection(onLightSection);
+    };
+
+    // Use requestAnimationFrame for smoother performance
+    let ticking = false;
+    const scrollHandler = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', scrollHandler, { passive: true });
+    window.addEventListener('resize', handleScroll);
+    handleScroll(); // Initial check
+
+    return () => {
+      window.removeEventListener('scroll', scrollHandler);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
 
   return (
     <motion.nav 
@@ -25,7 +73,7 @@ export default function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Logo />
+            <Logo isDark={isOnLightSection} />
           </motion.div>
           
           {/* Desktop Navigation */}
@@ -38,21 +86,21 @@ export default function Navigation() {
             >
               <motion.a 
                 href="#diensten" 
-                className="text-white hover:text-[#4ade80] font-medium transition-colors"
+                className={`${isOnLightSection ? 'text-[#042b2e] hover:text-[#4ade80]' : 'text-white hover:text-[#4ade80]'} font-medium transition-colors`}
                 whileHover={{ y: -2 }}
               >
                 Diensten
               </motion.a>
               <motion.a 
                 href="#doelgroep" 
-                className="text-white hover:text-[#4ade80] font-medium transition-colors"
+                className={`${isOnLightSection ? 'text-[#042b2e] hover:text-[#4ade80]' : 'text-white hover:text-[#4ade80]'} font-medium transition-colors`}
                 whileHover={{ y: -2 }}
               >
                 Doelgroep
               </motion.a>
               <motion.a 
                 href="#over-mij" 
-                className="text-white hover:text-[#4ade80] font-medium transition-colors"
+                className={`${isOnLightSection ? 'text-[#042b2e] hover:text-[#4ade80]' : 'text-white hover:text-[#4ade80]'} font-medium transition-colors`}
                 whileHover={{ y: -2 }}
               >
                 Over mij
@@ -63,7 +111,7 @@ export default function Navigation() {
             <div className="flex items-center gap-6 ml-4">
               <motion.a 
                 href={`tel:${content.contact.phone.replace(/\s/g, '').replace(/[()]/g, '')}`}
-                className="flex items-center gap-2 text-white hover:text-[#4ade80] transition-colors"
+                className={`flex items-center gap-2 ${isOnLightSection ? 'text-[#042b2e] hover:text-[#4ade80]' : 'text-white hover:text-[#4ade80]'} transition-colors`}
                 whileHover={{ x: 2 }}
               >
                 <Phone className="w-4 h-4" />
@@ -85,7 +133,7 @@ export default function Navigation() {
           <div className="md:hidden">
             <motion.button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white/10 focus:outline-none"
+              className={`inline-flex items-center justify-center p-2 rounded-md ${isOnLightSection ? 'text-[#042b2e] hover:bg-black/10' : 'text-white hover:bg-white/10'} focus:outline-none transition-colors`}
               aria-label="Menu"
               whileTap={{ scale: 0.95 }}
             >

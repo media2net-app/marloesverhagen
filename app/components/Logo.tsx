@@ -2,9 +2,10 @@ import { motion } from 'framer-motion';
 
 interface LogoProps {
   className?: string;
+  isDark?: boolean;
 }
 
-export default function Logo({ className = '' }: LogoProps) {
+export default function Logo({ className = '', isDark = false }: LogoProps) {
   return (
     <motion.a 
       href="/" 
@@ -14,10 +15,10 @@ export default function Logo({ className = '' }: LogoProps) {
     >
       {/* Text only - Marloes Verhagen */}
       <div className="flex items-baseline gap-2">
-        <span className="text-xl md:text-2xl font-bold text-white leading-tight">
+        <span className={`text-xl md:text-2xl font-bold leading-tight transition-colors ${isDark ? 'text-[#042b2e]' : 'text-white'}`}>
           Marloes
         </span>
-        <span className="text-lg md:text-xl font-normal text-white/90 leading-tight">
+        <span className={`text-lg md:text-xl font-normal leading-tight transition-colors ${isDark ? 'text-[#042b2e]/90' : 'text-white/90'}`}>
           Verhagen
         </span>
       </div>

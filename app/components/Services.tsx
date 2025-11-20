@@ -60,7 +60,7 @@ export default function Services() {
             return (
               <motion.div
                 key={index}
-                className="bg-[#f3f1ef] p-8 rounded-lg border border-[#f1f0ec] hover:shadow-xl transition-shadow duration-300 cursor-default"
+                className="bg-[#03272A] p-8 rounded-lg border border-[#042b2e] hover:shadow-xl transition-shadow duration-300 cursor-default"
                 variants={cardVariants}
                 whileHover={{ 
                   y: -8,
@@ -76,14 +76,14 @@ export default function Services() {
                   }}
                 >
                   <IconComponent 
-                    className="w-12 h-12 text-[#042b2e]" 
+                    className="w-12 h-12 text-[#4ade80]" 
                     strokeWidth={1.5}
                   />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-[#042b2e] mb-4">
+                <h3 className="text-2xl font-bold text-white mb-4">
                   {service.title}
                 </h3>
-                <p className="text-lg text-[#042b2e]/80 leading-relaxed">
+                <p className="text-lg text-white/90 leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>

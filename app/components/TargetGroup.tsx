@@ -28,14 +28,14 @@ export default function TargetGroup() {
   };
 
   return (
-    <section className="py-20 md:py-32 bg-[#f3f1ef] px-4">
+    <section className="py-20 md:py-32 bg-[#03272A] px-4">
       <div className="max-w-4xl mx-auto">
         <AnimateOnScroll>
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#042b2e] mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
               {content.targetGroup.title}
             </h2>
-            <p className="text-xl text-[#042b2e]/80 max-w-3xl mx-auto">
+            <p className="text-xl text-white/90 max-w-3xl mx-auto">
               {content.targetGroup.description}
             </p>
           </div>
@@ -51,7 +51,7 @@ export default function TargetGroup() {
           {content.targetGroup.profiles.map((profile, index) => (
             <motion.div
               key={index}
-              className="bg-white p-6 rounded-lg border-l-4 border-[#042b2e] shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="bg-white p-6 rounded-lg border-l-4 border-[#4ade80] shadow-sm hover:shadow-md transition-shadow duration-300"
               variants={itemVariants}
               whileHover={{ 
                 x: 8,

@@ -31,7 +31,7 @@ export default function Hero() {
 
 
   return (
-    <section className="relative min-h-[95vh] flex items-center overflow-hidden px-4 py-20 md:py-32">
+    <section className="relative min-h-[95vh] flex items-end overflow-hidden px-4 pt-32 pb-12 md:pt-40 md:pb-20">
       {/* Background image - native 1920x1230, served 1:1 */}
       <div className="absolute inset-0 z-0 flex items-center justify-center">
         <Image
@@ -44,7 +44,7 @@ export default function Hero() {
           quality={100}
           unoptimized
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#042b2e]/90 via-[#042b2e]/55 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#042b2e]/95 via-[#042b2e]/70 via-[#042b2e]/50 to-transparent" style={{ background: 'linear-gradient(to top right, rgba(4, 43, 46, 0.95) 0%, rgba(4, 43, 46, 0.70) 30%, rgba(4, 43, 46, 0.50) 60%, transparent 100%)' }}></div>
       </div>
 
       {/* Content */}
@@ -63,14 +63,14 @@ export default function Hero() {
           </motion.div>
           
           <motion.h1 
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-3 md:mb-4 leading-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4 leading-tight lg:whitespace-nowrap"
             variants={itemVariants}
           >
             {content.hero.headline}
           </motion.h1>
           
           <motion.p 
-            className="text-base md:text-xl lg:text-2xl text-white/85 mb-4 md:mb-6 max-w-3xl leading-snug"
+            className="text-base md:text-xl lg:text-xl text-white/85 mb-4 md:mb-6 max-w-4xl leading-snug lg:whitespace-nowrap"
             variants={itemVariants}
           >
             {content.hero.subheadline}
@@ -102,10 +102,33 @@ export default function Hero() {
           >
             <motion.a
               href="#contact"
-              className="inline-flex items-center gap-1.5 md:gap-2 px-4 py-2.5 md:px-8 md:py-4 bg-[#4ade80] text-[#042b2e] rounded-full font-bold text-sm md:text-lg hover:bg-[#22c55e] transition-colors duration-200 shadow-lg shadow-[#4ade80]/30 flex-1 md:flex-initial justify-center"
+              className="inline-flex items-center gap-1.5 md:gap-2 px-4 py-2.5 md:px-8 md:py-4 bg-[#4ade80] text-[#042b2e] rounded-full font-bold text-sm md:text-lg hover:bg-[#22c55e] transition-colors duration-200 shadow-lg shadow-[#4ade80]/30 flex-1 md:flex-initial justify-center relative"
               whileHover={{ scale: 1.05, boxShadow: '0 10px 40px rgba(74, 222, 128, 0.4)' }}
               whileTap={{ scale: 0.95 }}
             >
+              {/* Online indicator */}
+              <div className="absolute -top-2 -right-2 md:-top-2.5 md:-right-2.5 flex items-center gap-1.5 bg-white/95 backdrop-blur-sm px-2 py-1 rounded-full shadow-md">
+                <div className="relative flex items-center justify-center">
+                  {/* Pulsing dot */}
+                  <motion.div
+                    className="absolute w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-[#4ade80]"
+                    animate={{
+                      scale: [1, 1.5, 1],
+                      opacity: [1, 0.5, 1],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  />
+                  {/* Solid dot */}
+                  <div className="relative w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#4ade80] z-10"></div>
+                </div>
+                <span className="text-[10px] md:text-xs text-[#042b2e] font-medium whitespace-nowrap">
+                  Beschikbaar
+                </span>
+              </div>
               <span className="whitespace-nowrap">Neem contact op</span>
               <ArrowRight className="w-4 h-4 md:w-5 md:h-5 flex-shrink-0" />
             </motion.a>

@@ -56,7 +56,7 @@ export default function HeroFeatures() {
       
       <div className="max-w-7xl mx-auto">
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -67,14 +67,14 @@ export default function HeroFeatures() {
             return (
               <motion.div
                 key={index}
-                className="flex flex-col items-center text-center group"
+                className="flex flex-row md:flex-col items-start md:items-center gap-3 md:gap-0 text-left md:text-center group"
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
               >
-                <div className="mb-4 p-4 rounded-full bg-[#4ade80]/10 group-hover:bg-[#4ade80]/20 transition-colors duration-300">
+                <div className="flex-shrink-0 mb-0 md:mb-4 p-4 rounded-full bg-[#4ade80]/10 group-hover:bg-[#4ade80]/20 transition-colors duration-300">
                   <Icon className="w-8 h-8 text-[#4ade80]" strokeWidth={1.5} />
                 </div>
-                <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-[200px]">
+                <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-[200px] md:max-w-none">
                   {feature.text}
                 </p>
               </motion.div>

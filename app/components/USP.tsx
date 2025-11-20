@@ -60,7 +60,7 @@ export default function USP() {
           {content.usp.values.map((value, index) => (
             <motion.div
               key={index}
-              className="bg-[#f3f1ef] p-8 rounded-lg text-center border border-[#f1f0ec] hover:shadow-lg transition-shadow duration-300"
+              className="bg-[#03272A] p-8 rounded-lg text-center border border-[#042b2e] hover:shadow-lg transition-shadow duration-300"
               variants={cardVariants}
               whileHover={{ 
                 y: -8,
@@ -68,10 +68,10 @@ export default function USP() {
                 transition: { duration: 0.3 }
               }}
             >
-              <h4 className="text-2xl font-bold text-[#042b2e] mb-4">
+              <h4 className="text-2xl font-bold text-white mb-4">
                 {value.title}
               </h4>
-              <p className="text-lg text-[#042b2e]/80">
+              <p className="text-lg text-white/90">
                 {value.description}
               </p>
             </motion.div>
