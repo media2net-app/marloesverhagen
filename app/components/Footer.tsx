@@ -3,8 +3,10 @@
 import { content } from '@/app/data/content';
 import { motion, Variants } from 'framer-motion';
 import AnimateOnScroll from './AnimateOnScroll';
+import { useColor } from '@/app/contexts/ColorContext';
 
 export default function Footer() {
+  const { colorValue, darkColorValue } = useColor();
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -28,7 +30,14 @@ export default function Footer() {
   };
 
   return (
-    <footer id="contact" className="bg-[#03272A] border-t-2 border-[#042b2e] px-4 py-16">
+    <footer 
+      id="contact" 
+      className="border-t-2 px-4 py-16"
+      style={{ 
+        backgroundColor: darkColorValue,
+        borderTopColor: darkColorValue
+      }}
+    >
       <div className="max-w-6xl mx-auto">
         <motion.div 
           className="max-w-2xl mb-12"
@@ -50,7 +59,16 @@ export default function Footer() {
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}
               >
-                <strong>Email:</strong> <a href={`mailto:${content.contact.email}`} className="underline hover:text-[#4ade80] transition-colors">{content.contact.email}</a>
+                <strong>Email:</strong> <a 
+                  href={`mailto:${content.contact.email}`} 
+                  className="underline transition-colors"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = colorValue;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '';
+                  }}
+                >{content.contact.email}</a>
               </motion.p>
               <motion.p 
                 className="text-lg text-white"
@@ -64,7 +82,18 @@ export default function Footer() {
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}
               >
-                <strong>LinkedIn:</strong> <a href={`https://${content.contact.linkedin}`} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#4ade80] transition-colors">{content.contact.linkedin}</a>
+                <strong>LinkedIn:</strong> <a 
+                  href={`https://${content.contact.linkedin}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="underline transition-colors"
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = colorValue;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = '';
+                  }}
+                >{content.contact.linkedin}</a>
               </motion.p>
             </div>
           </motion.div>
@@ -76,7 +105,18 @@ export default function Footer() {
               © 2025 {content.name}. Alle rechten voorbehouden.
             </p>
             <p className="text-sm text-white/50">
-              Website gemaakt door <a href="https://improve.onl" target="_blank" rel="noopener noreferrer" className="underline hover:text-[#4ade80] transition-colors">Improve.onl</a> | Websites met impact
+              Website gemaakt door <a 
+                href="https://improve.onl" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="underline transition-colors"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = colorValue;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = '';
+                }}
+              >Improve.onl</a> | Websites met impact
             </p>
           </div>
         </AnimateOnScroll>

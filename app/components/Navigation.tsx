@@ -5,10 +5,12 @@ import { content } from '@/app/data/content';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, ArrowRight, Menu, X } from 'lucide-react';
 import Logo from './Logo';
+import { useColor } from '@/app/contexts/ColorContext';
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOnLightSection, setIsOnLightSection] = useState(false);
+  const { colorValue, hoverColorValue } = useColor();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,21 +88,48 @@ export default function Navigation() {
             >
               <motion.a 
                 href="#diensten" 
-                className={`${isOnLightSection ? 'text-[#042b2e] hover:text-[#4ade80]' : 'text-white hover:text-[#4ade80]'} font-medium transition-colors`}
+                className={`${isOnLightSection ? 'text-[#042b2e]' : 'text-white'} font-medium transition-colors`}
+                style={{ 
+                  '--hover-color': colorValue 
+                } as React.CSSProperties}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = colorValue;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = isOnLightSection ? '#042b2e' : 'white';
+                }}
                 whileHover={{ y: -2 }}
               >
                 Diensten
               </motion.a>
               <motion.a 
                 href="#doelgroep" 
-                className={`${isOnLightSection ? 'text-[#042b2e] hover:text-[#4ade80]' : 'text-white hover:text-[#4ade80]'} font-medium transition-colors`}
+                className={`${isOnLightSection ? 'text-[#042b2e]' : 'text-white'} font-medium transition-colors`}
+                style={{ 
+                  '--hover-color': colorValue 
+                } as React.CSSProperties}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = colorValue;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = isOnLightSection ? '#042b2e' : 'white';
+                }}
                 whileHover={{ y: -2 }}
               >
                 Doelgroep
               </motion.a>
               <motion.a 
                 href="#over-mij" 
-                className={`${isOnLightSection ? 'text-[#042b2e] hover:text-[#4ade80]' : 'text-white hover:text-[#4ade80]'} font-medium transition-colors`}
+                className={`${isOnLightSection ? 'text-[#042b2e]' : 'text-white'} font-medium transition-colors`}
+                style={{ 
+                  '--hover-color': colorValue 
+                } as React.CSSProperties}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = colorValue;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = isOnLightSection ? '#042b2e' : 'white';
+                }}
                 whileHover={{ y: -2 }}
               >
                 Over mij
@@ -111,7 +140,13 @@ export default function Navigation() {
             <div className="flex items-center gap-6 ml-4">
               <motion.a 
                 href={`tel:${content.contact.phone.replace(/\s/g, '').replace(/[()]/g, '')}`}
-                className={`flex items-center gap-2 ${isOnLightSection ? 'text-[#042b2e] hover:text-[#4ade80]' : 'text-white hover:text-[#4ade80]'} transition-colors`}
+                className={`flex items-center gap-2 ${isOnLightSection ? 'text-[#042b2e]' : 'text-white'} transition-colors`}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = colorValue;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = isOnLightSection ? '#042b2e' : 'white';
+                }}
                 whileHover={{ x: 2 }}
               >
                 <Phone className="w-4 h-4" />
@@ -119,7 +154,14 @@ export default function Navigation() {
               </motion.a>
               <motion.a
                 href="#contact"
-                className="flex items-center gap-2 bg-[#4ade80] text-[#042b2e] px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-[#22c55e] transition-colors"
+                className="flex items-center gap-2 text-white px-5 py-2.5 rounded-full font-semibold text-sm transition-colors"
+                style={{ backgroundColor: colorValue }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = hoverColorValue;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = colorValue;
+                }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -193,7 +235,8 @@ export default function Navigation() {
               {/* Mobile contact button */}
               <motion.a
                 href="#contact"
-                className="block px-3 py-2 bg-[#4ade80] text-[#042b2e] rounded-md font-medium text-center mt-2"
+                className="block px-3 py-2 text-white rounded-md font-medium text-center mt-2"
+                style={{ backgroundColor: colorValue }}
                 onClick={() => setIsOpen(false)}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}

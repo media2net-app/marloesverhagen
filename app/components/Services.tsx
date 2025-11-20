@@ -4,6 +4,7 @@ import { content } from '@/app/data/content';
 import { Briefcase, Users, RefreshCw, LucideIcon } from 'lucide-react';
 import { motion, Variants } from 'framer-motion';
 import AnimateOnScroll from './AnimateOnScroll';
+import { useColor } from '@/app/contexts/ColorContext';
 
 const iconMap: Record<string, LucideIcon> = {
   Briefcase,
@@ -12,6 +13,8 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 export default function Services() {
+  const { colorValue, darkColorValue } = useColor();
+  
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -60,7 +63,11 @@ export default function Services() {
             return (
               <motion.div
                 key={index}
-                className="bg-[#03272A] p-8 rounded-lg border border-[#042b2e] hover:shadow-xl transition-shadow duration-300 cursor-default"
+                className="p-8 rounded-lg border hover:shadow-xl transition-shadow duration-300 cursor-default"
+                style={{ 
+                  backgroundColor: darkColorValue,
+                  borderColor: darkColorValue
+                }}
                 variants={cardVariants}
                 whileHover={{ 
                   y: -8,
@@ -76,7 +83,8 @@ export default function Services() {
                   }}
                 >
                   <IconComponent 
-                    className="w-12 h-12 text-[#4ade80]" 
+                    className="w-12 h-12" 
+                    style={{ color: colorValue }}
                     strokeWidth={1.5}
                   />
                 </motion.div>

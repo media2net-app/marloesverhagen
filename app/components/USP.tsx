@@ -3,8 +3,10 @@
 import { content } from '@/app/data/content';
 import { motion, Variants } from 'framer-motion';
 import AnimateOnScroll from './AnimateOnScroll';
+import { useColor } from '@/app/contexts/ColorContext';
 
 export default function USP() {
+  const { darkColorValue } = useColor();
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -60,7 +62,11 @@ export default function USP() {
           {content.usp.values.map((value, index) => (
             <motion.div
               key={index}
-              className="bg-[#03272A] p-8 rounded-lg text-center border border-[#042b2e] hover:shadow-lg transition-shadow duration-300"
+              className="p-8 rounded-lg text-center border hover:shadow-lg transition-shadow duration-300"
+              style={{ 
+                backgroundColor: darkColorValue,
+                borderColor: darkColorValue
+              }}
               variants={cardVariants}
               whileHover={{ 
                 y: -8,

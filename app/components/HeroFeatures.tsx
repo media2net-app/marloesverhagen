@@ -2,6 +2,7 @@
 
 import { motion, Variants } from 'framer-motion';
 import { Briefcase, Users, Target, Heart, Zap } from 'lucide-react';
+import { useColor } from '@/app/contexts/ColorContext';
 
 const features = [
   {
@@ -27,6 +28,16 @@ const features = [
 ];
 
 export default function HeroFeatures() {
+  const { colorValue, darkColorValue, darkerColorValue } = useColor();
+  
+  // Helper to convert hex to rgba with opacity
+  const hexToRgba = (hex: string, opacity: number) => {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+  };
+  
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -50,7 +61,12 @@ export default function HeroFeatures() {
   };
 
   return (
-    <section className="relative bg-gradient-to-b from-[#021a1c] to-[#042b2e] px-4 py-12 md:py-16">
+    <section 
+      className="relative px-4 py-12 md:py-16"
+      style={{
+        background: `linear-gradient(to bottom, ${darkerColorValue} 0%, ${darkColorValue} 100%)`
+      }}
+    >
       {/* Decorative top line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
       
@@ -71,8 +87,19 @@ export default function HeroFeatures() {
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
               >
-                <div className="flex-shrink-0 mb-0 md:mb-4 p-4 rounded-full bg-[#4ade80]/10 group-hover:bg-[#4ade80]/20 transition-colors duration-300">
-                  <Icon className="w-8 h-8 text-[#4ade80]" strokeWidth={1.5} />
+                <div 
+                  className="flex-shrink-0 mb-0 md:mb-4 p-4 rounded-full transition-colors duration-300"
+                  style={{ 
+                    backgroundColor: hexToRgba(colorValue, 0.1),
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = hexToRgba(colorValue, 0.2);
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = hexToRgba(colorValue, 0.1);
+                  }}
+                >
+                  <Icon className="w-8 h-8" style={{ color: colorValue }} strokeWidth={1.5} />
                 </div>
                 <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-[200px] md:max-w-none">
                   {feature.text}

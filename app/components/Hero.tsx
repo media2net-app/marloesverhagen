@@ -4,8 +4,18 @@ import { content } from '@/app/data/content';
 import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
+import { useColor } from '@/app/contexts/ColorContext';
 
 export default function Hero() {
+  const { colorValue, hoverColorValue, darkColorValue } = useColor();
+  
+  // Helper to convert hex to rgba with opacity
+  const hexToRgba = (hex: string, opacity: number) => {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+  };
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -44,7 +54,12 @@ export default function Hero() {
           quality={100}
           unoptimized
         />
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#042b2e]/95 via-[#042b2e]/70 via-[#042b2e]/50 to-transparent" style={{ background: 'linear-gradient(to top right, rgba(4, 43, 46, 0.95) 0%, rgba(4, 43, 46, 0.70) 30%, rgba(4, 43, 46, 0.50) 60%, transparent 100%)' }}></div>
+        <div 
+          className="absolute inset-0 bg-gradient-to-tr from-transparent to-transparent"
+          style={{ 
+            background: `linear-gradient(to top right, ${hexToRgba(darkColorValue, 0.95)} 0%, ${hexToRgba(darkColorValue, 0.70)} 30%, ${hexToRgba(darkColorValue, 0.50)} 60%, transparent 100%)` 
+          }}
+        ></div>
       </div>
 
       {/* Content */}
@@ -89,7 +104,7 @@ export default function Hero() {
             >
               {content.hero.highlights.map((item, index) => (
                 <li key={index} className="flex items-start gap-2 md:gap-3">
-                  <span className="mt-1.5 md:mt-2 flex-shrink-0 w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-[#4ade80] min-w-[8px] min-h-[8px] md:min-w-[10px] md:min-h-[10px]"></span>
+                  <span className="mt-1.5 md:mt-2 flex-shrink-0 w-2 h-2 md:w-2.5 md:h-2.5 rounded-full min-w-[8px] min-h-[8px] md:min-w-[10px] md:min-h-[10px]" style={{ backgroundColor: colorValue }}></span>
                   <p className="text-white/80 text-sm md:text-base leading-relaxed">{item}</p>
                 </li>
               ))}
@@ -102,8 +117,20 @@ export default function Hero() {
           >
             <motion.a
               href="#contact"
-              className="inline-flex items-center gap-1.5 md:gap-2 px-4 py-2.5 md:px-8 md:py-4 bg-[#4ade80] text-[#042b2e] rounded-full font-bold text-sm md:text-lg hover:bg-[#22c55e] transition-colors duration-200 shadow-lg shadow-[#4ade80]/30 flex-1 md:flex-initial justify-center relative"
-              whileHover={{ scale: 1.05, boxShadow: '0 10px 40px rgba(74, 222, 128, 0.4)' }}
+              className="inline-flex items-center gap-1.5 md:gap-2 px-4 py-2.5 md:px-8 md:py-4 text-white rounded-full font-bold text-sm md:text-lg transition-colors duration-200 shadow-lg flex-1 md:flex-initial justify-center relative"
+              style={{ 
+                backgroundColor: colorValue,
+                boxShadow: `0 10px 15px -3px ${hexToRgba(colorValue, 0.3)}, 0 4px 6px -2px ${hexToRgba(colorValue, 0.2)}`
+              }}
+              whileHover={{ scale: 1.05 }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = hoverColorValue;
+                e.currentTarget.style.boxShadow = `0 10px 40px ${hexToRgba(colorValue, 0.4)}`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = colorValue;
+                e.currentTarget.style.boxShadow = `0 10px 15px -3px ${hexToRgba(colorValue, 0.3)}, 0 4px 6px -2px ${hexToRgba(colorValue, 0.2)}`;
+              }}
               whileTap={{ scale: 0.95 }}
             >
               {/* Online indicator */}
@@ -111,7 +138,8 @@ export default function Hero() {
                 <div className="relative flex items-center justify-center">
                   {/* Pulsing dot */}
                   <motion.div
-                    className="absolute w-2 h-2 md:w-2.5 md:h-2.5 rounded-full bg-[#4ade80]"
+                    className="absolute w-2 h-2 md:w-2.5 md:h-2.5 rounded-full"
+                    style={{ backgroundColor: colorValue }}
                     animate={{
                       scale: [1, 1.5, 1],
                       opacity: [1, 0.5, 1],
@@ -123,9 +151,9 @@ export default function Hero() {
                     }}
                   />
                   {/* Solid dot */}
-                  <div className="relative w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#4ade80] z-10"></div>
+                  <div className="relative w-1.5 h-1.5 md:w-2 md:h-2 rounded-full z-10" style={{ backgroundColor: colorValue }}></div>
                 </div>
-                <span className="text-[10px] md:text-xs text-[#042b2e] font-medium whitespace-nowrap">
+                <span className="text-[10px] md:text-xs text-black font-medium whitespace-nowrap">
                   Beschikbaar
                 </span>
               </div>

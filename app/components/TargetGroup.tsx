@@ -3,8 +3,10 @@
 import { content } from '@/app/data/content';
 import { motion, Variants } from 'framer-motion';
 import AnimateOnScroll from './AnimateOnScroll';
+import { useColor } from '@/app/contexts/ColorContext';
 
 export default function TargetGroup() {
+  const { colorValue, darkColorValue } = useColor();
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -28,7 +30,10 @@ export default function TargetGroup() {
   };
 
   return (
-    <section className="py-20 md:py-32 bg-[#03272A] px-4">
+    <section 
+      className="py-20 md:py-32 px-4"
+      style={{ backgroundColor: darkColorValue }}
+    >
       <div className="max-w-4xl mx-auto">
         <AnimateOnScroll>
           <div className="text-center mb-12">
@@ -51,7 +56,8 @@ export default function TargetGroup() {
           {content.targetGroup.profiles.map((profile, index) => (
             <motion.div
               key={index}
-              className="bg-white p-6 rounded-lg border-l-4 border-[#4ade80] shadow-sm hover:shadow-md transition-shadow duration-300"
+              className="bg-white p-6 rounded-lg border-l-4 shadow-sm hover:shadow-md transition-shadow duration-300"
+              style={{ borderLeftColor: colorValue }}
               variants={itemVariants}
               whileHover={{ 
                 x: 8,
