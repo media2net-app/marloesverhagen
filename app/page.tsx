@@ -4,7 +4,6 @@ import HeroFeatures from './components/HeroFeatures';
 import Services from './components/Services';
 import TargetGroup from './components/TargetGroup';
 import USP from './components/USP';
-import About from './components/About';
 import Footer from './components/Footer';
 
 export default function Home() {
@@ -20,9 +19,6 @@ export default function Home() {
         <TargetGroup />
       </section>
       <USP />
-      <section id="over-mij">
-        <About />
-      </section>
       <Footer />
     </main>
   );

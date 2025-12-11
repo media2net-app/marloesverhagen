@@ -119,22 +119,6 @@ export default function Navigation() {
               >
                 Doelgroep
               </motion.a>
-              <motion.a 
-                href="#over-mij" 
-                className="text-white font-medium transition-colors"
-                style={{ 
-                  '--hover-color': colorValue 
-                } as React.CSSProperties}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = colorValue;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = 'white';
-                }}
-                whileHover={{ y: -2 }}
-              >
-                Over mij
-              </motion.a>
             </motion.div>
             
             {/* Phone and CTA behind menu */}
@@ -217,8 +201,7 @@ export default function Navigation() {
             >
               {[
                 { href: '#diensten', label: 'Diensten' },
-                { href: '#doelgroep', label: 'Doelgroep' },
-                { href: '#over-mij', label: 'Over mij' },
+                { href: '#doelgroep', label: 'Doelgroep' }
               ].map((item, index) => (
                 <motion.a
                   key={item.href}
