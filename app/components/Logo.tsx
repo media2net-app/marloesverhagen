@@ -18,10 +18,10 @@ export default function Logo({ className = '', isDark = false }: LogoProps) {
       <Image
         src="/logo.svg"
         alt="Logo Marloes Verhagen"
-        width={190}
-        height={40}
+        width={210}
+        height={44}
         priority
-        className={`h-10 w-auto transition-all ${isDark ? 'invert' : ''}`}
+        className={`h-11 w-auto transition-all ${isDark ? 'invert' : ''}`}
       />
     </motion.a>
   );
