@@ -10,7 +10,7 @@ import { useColor } from '@/app/contexts/ColorContext';
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isOnLightSection, setIsOnLightSection] = useState(false);
-  const { colorValue, hoverColorValue } = useColor();
+  const { colorValue, hoverColorValue, darkColorValue } = useColor();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,7 +61,8 @@ export default function Navigation() {
 
   return (
     <motion.nav 
-      className="fixed top-0 left-0 right-0 z-50 bg-transparent/95 backdrop-blur-sm"
+      className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm"
+      style={{ backgroundColor: darkColorValue }}
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
@@ -75,7 +76,7 @@ export default function Navigation() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Logo isDark={isOnLightSection} />
+            <Logo isDark={false} />
           </motion.div>
           
           {/* Desktop Navigation */}
@@ -88,7 +89,7 @@ export default function Navigation() {
             >
               <motion.a 
                 href="#diensten" 
-                className={`${isOnLightSection ? 'text-[#042b2e]' : 'text-white'} font-medium transition-colors`}
+                className="text-white font-medium transition-colors"
                 style={{ 
                   '--hover-color': colorValue 
                 } as React.CSSProperties}
@@ -96,7 +97,7 @@ export default function Navigation() {
                   e.currentTarget.style.color = colorValue;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = isOnLightSection ? '#042b2e' : 'white';
+                  e.currentTarget.style.color = 'white';
                 }}
                 whileHover={{ y: -2 }}
               >
@@ -104,7 +105,7 @@ export default function Navigation() {
               </motion.a>
               <motion.a 
                 href="#doelgroep" 
-                className={`${isOnLightSection ? 'text-[#042b2e]' : 'text-white'} font-medium transition-colors`}
+                className="text-white font-medium transition-colors"
                 style={{ 
                   '--hover-color': colorValue 
                 } as React.CSSProperties}
@@ -112,7 +113,7 @@ export default function Navigation() {
                   e.currentTarget.style.color = colorValue;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = isOnLightSection ? '#042b2e' : 'white';
+                  e.currentTarget.style.color = 'white';
                 }}
                 whileHover={{ y: -2 }}
               >
@@ -120,7 +121,7 @@ export default function Navigation() {
               </motion.a>
               <motion.a 
                 href="#over-mij" 
-                className={`${isOnLightSection ? 'text-[#042b2e]' : 'text-white'} font-medium transition-colors`}
+                className="text-white font-medium transition-colors"
                 style={{ 
                   '--hover-color': colorValue 
                 } as React.CSSProperties}
@@ -128,7 +129,7 @@ export default function Navigation() {
                   e.currentTarget.style.color = colorValue;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = isOnLightSection ? '#042b2e' : 'white';
+                  e.currentTarget.style.color = 'white';
                 }}
                 whileHover={{ y: -2 }}
               >
@@ -140,12 +141,12 @@ export default function Navigation() {
             <div className="flex items-center gap-6 ml-4">
               <motion.a 
                 href={`tel:${content.contact.phone.replace(/\s/g, '').replace(/[()]/g, '')}`}
-                className={`flex items-center gap-2 ${isOnLightSection ? 'text-[#042b2e]' : 'text-white'} transition-colors`}
+                className="flex items-center gap-2 text-white transition-colors"
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = colorValue;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.color = isOnLightSection ? '#042b2e' : 'white';
+                  e.currentTarget.style.color = 'white';
                 }}
                 whileHover={{ x: 2 }}
               >
