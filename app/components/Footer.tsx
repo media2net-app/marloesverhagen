@@ -104,20 +104,6 @@ export default function Footer() {
             <p className="text-lg text-white/60">
               © 2025 {content.name}. Alle rechten voorbehouden.
             </p>
-            <p className="text-sm text-white/50">
-              Website gemaakt door <a 
-                href="https://improve.onl" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="underline transition-colors"
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = colorValue;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = '';
-                }}
-              >Improve.onl</a> | Websites met impact
-            </p>
           </div>
         </AnimateOnScroll>
       </div>
