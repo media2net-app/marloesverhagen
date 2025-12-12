@@ -83,7 +83,7 @@ export const content = {
 
   contact: {
     title: "Neem contact op",
-    description: "Benieuwd hoe ik jouw organisatie kan helpen? Laten we het gesprek aan gaan.",
+    description: "Benieuwd hoe ik jouw organisatie kan helpen? Laten we in gesprek gaan?",
     email: "contact@marloesverhagen.nl",
     phone: "+31(0)6 1307 9825",
     linkedin: "linkedin.com/in/marloesverhagen"
