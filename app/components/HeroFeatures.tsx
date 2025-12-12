@@ -83,7 +83,7 @@ export default function HeroFeatures() {
             return (
               <motion.div
                 key={index}
-                className="flex flex-row md:flex-col items-start md:items-center gap-3 md:gap-0 text-left md:text-center group"
+                className="flex flex-row md:flex-col items-center md:items-center gap-3 md:gap-0 text-left md:text-center group"
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
               >
