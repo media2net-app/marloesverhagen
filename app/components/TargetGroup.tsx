@@ -36,11 +36,11 @@ export default function TargetGroup() {
     >
       <div className="max-w-4xl mx-auto">
         <AnimateOnScroll>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <div className="text-center mb-10 md:mb-12">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               {content.targetGroup.title}
             </h2>
-            <p className="text-xl text-white/90 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto px-2">
               {content.targetGroup.description}
             </p>
           </div>
@@ -64,7 +64,7 @@ export default function TargetGroup() {
                 transition: { duration: 0.3 }
               }}
             >
-              <p className="text-lg text-[#042b2e]">
+              <p className="text-base md:text-lg text-[#042b2e]">
                 {index + 1}. {profile}
               </p>
             </motion.div>

@@ -41,13 +41,15 @@ export default function Services() {
     <section className="py-20 md:py-32 bg-white px-4">
       <div className="max-w-6xl mx-auto">
         <AnimateOnScroll>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#042b2e] mb-4">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#042b2e] mb-4">
               {content.services.title}
             </h2>
-            <p className="text-xl text-[#042b2e]/80 max-w-3xl mx-auto">
-              {content.services.description}
-            </p>
+            {content.services.description && (
+              <p className="text-xl text-[#042b2e]/80 max-w-3xl mx-auto">
+                {content.services.description}
+              </p>
+            )}
           </div>
         </AnimateOnScroll>
         
@@ -88,10 +90,10 @@ export default function Services() {
                     strokeWidth={1.5}
                   />
                 </motion.div>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">
                   {service.title}
                 </h3>
-                <p className="text-lg text-white/90 leading-relaxed">
+                <p className="text-base md:text-lg text-white/90 leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>

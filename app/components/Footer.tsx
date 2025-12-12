@@ -47,21 +47,21 @@ export default function Footer() {
           viewport={{ once: true, amount: 0.2 }}
         >
           <motion.div variants={itemVariants}>
-            <h3 className="text-3xl font-bold text-white mb-6">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">
               {content.contact.title}
             </h3>
-            <p className="text-lg text-white/90 mb-6">
+            <p className="text-base md:text-lg text-white/90 mb-4 md:mb-6">
               {content.contact.description}
             </p>
             <div className="space-y-3">
               <motion.p 
-                className="text-lg text-white"
+                className="text-base md:text-lg text-white break-words"
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}
               >
                 <strong>Email:</strong> <a 
                   href={`mailto:${content.contact.email}`} 
-                  className="underline transition-colors"
+                  className="underline transition-colors break-all"
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = colorValue;
                   }}
@@ -71,14 +71,14 @@ export default function Footer() {
                 >{content.contact.email}</a>
               </motion.p>
               <motion.p 
-                className="text-lg text-white"
+                className="text-base md:text-lg text-white break-words"
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}
               >
-                <strong>Telefoon:</strong> {content.contact.phone}
+                <strong>Telefoon:</strong> <a href={`tel:${content.contact.phone.replace(/\s/g, '').replace(/[()]/g, '')}`} className="underline">{content.contact.phone}</a>
               </motion.p>
               <motion.p 
-                className="text-lg text-white"
+                className="text-base md:text-lg text-white break-words"
                 whileHover={{ x: 5 }}
                 transition={{ duration: 0.2 }}
               >
@@ -86,7 +86,7 @@ export default function Footer() {
                   href={`https://${content.contact.linkedin}`} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="underline transition-colors"
+                  className="underline transition-colors break-all"
                   onMouseEnter={(e) => {
                     e.currentTarget.style.color = colorValue;
                   }}
@@ -100,8 +100,8 @@ export default function Footer() {
         </motion.div>
         
         <AnimateOnScroll>
-          <div className="border-t border-white/20 pt-8 text-center space-y-2">
-            <p className="text-lg text-white/60">
+          <div className="border-t border-white/20 pt-6 md:pt-8 text-center space-y-2">
+            <p className="text-sm md:text-lg text-white/60">
               © 2025 {content.name}. Alle rechten voorbehouden.
             </p>
           </div>

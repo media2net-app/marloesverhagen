@@ -184,7 +184,8 @@ export default function Navigation() {
               transition={{ duration: 0.3 }}
             >
               {[
-                { href: '#diensten', label: 'Diensten' }
+                { href: '#diensten', label: 'Diensten' },
+                { href: '#contact', label: 'Neem contact op' },
               ].map((item, index) => (
                 <motion.a
                   key={item.href}

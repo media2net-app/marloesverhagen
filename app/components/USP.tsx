@@ -33,27 +33,15 @@ export default function USP() {
     <section className="py-20 md:py-32 bg-white px-4">
       <div className="max-w-6xl mx-auto">
         <AnimateOnScroll>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-[#042b2e] mb-6">
-              {content.usp.title}
-            </h2>
-            <motion.h3 
-              className="text-3xl md:text-4xl font-bold text-[#042b2e] mb-6 italic"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              {content.usp.headline}
-            </motion.h3>
-            <p className="text-xl text-[#042b2e]/80 max-w-3xl mx-auto mb-8">
-              {content.usp.description}
+          <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+            <p className="text-lg md:text-xl text-[#042b2e] font-medium leading-relaxed px-2">
+              {content.usp.conclusion}
             </p>
           </div>
         </AnimateOnScroll>
         
         <motion.div 
-          className="grid md:grid-cols-3 gap-8 mb-12"
+          className="grid md:grid-cols-3 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -74,23 +62,15 @@ export default function USP() {
                 transition: { duration: 0.3 }
               }}
             >
-              <h4 className="text-2xl font-bold text-white mb-4">
+              <h4 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">
                 {value.title}
               </h4>
-              <p className="text-lg text-white/90">
+              <p className="text-base md:text-lg text-white/90">
                 {value.description}
               </p>
             </motion.div>
           ))}
         </motion.div>
-        
-        <AnimateOnScroll delay={0.3}>
-          <div className="max-w-4xl mx-auto text-center">
-            <p className="text-xl text-[#042b2e] font-medium leading-relaxed">
-              {content.usp.conclusion}
-            </p>
-          </div>
-        </AnimateOnScroll>
       </div>
     </section>
   );

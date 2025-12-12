@@ -31,3 +31,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
+
+/* Compense fixed nav when scrolling to anchors */
+section[id] {
+  scroll-margin-top: 96px;
+}

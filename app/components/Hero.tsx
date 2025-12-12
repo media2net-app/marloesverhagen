@@ -78,21 +78,21 @@ export default function Hero() {
           </motion.div>
           
           <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4 leading-tight lg:whitespace-nowrap"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4 leading-tight"
             variants={itemVariants}
           >
             {content.hero.headline}
           </motion.h1>
           
           <motion.p 
-            className="text-base md:text-xl lg:text-xl text-white/85 mb-4 md:mb-6 max-w-4xl leading-snug lg:whitespace-nowrap"
+            className="text-base md:text-xl lg:text-xl text-white/85 mb-4 md:mb-6 max-w-4xl leading-snug"
             variants={itemVariants}
           >
             {content.hero.subheadline}
           </motion.p>
           
           <motion.p 
-            className="text-sm md:text-lg lg:text-xl text-white/90 mb-6 md:mb-10 max-w-3xl leading-relaxed"
+            className="text-sm md:text-lg lg:text-xl text-white/90 mb-6 md:mb-10 max-w-3xl leading-relaxed px-1"
             variants={itemVariants}
           >
             {content.hero.description}
@@ -112,12 +112,12 @@ export default function Hero() {
           )}
           
           <motion.div 
-            className="flex flex-row gap-3 md:gap-4"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4"
             variants={itemVariants}
           >
             <motion.a
               href="#contact"
-              className="inline-flex items-center gap-1.5 md:gap-2 px-4 py-2.5 md:px-8 md:py-4 text-white rounded-full font-bold text-sm md:text-lg transition-colors duration-200 shadow-lg flex-1 md:flex-initial justify-center relative"
+              className="inline-flex items-center gap-1.5 md:gap-2 px-4 py-2.5 md:px-8 md:py-4 text-white rounded-full font-bold text-sm md:text-lg transition-colors duration-200 shadow-lg w-full sm:w-auto justify-center relative"
               style={{ 
                 backgroundColor: colorValue,
                 boxShadow: `0 10px 15px -3px ${hexToRgba(colorValue, 0.3)}, 0 4px 6px -2px ${hexToRgba(colorValue, 0.2)}`
@@ -133,8 +133,8 @@ export default function Hero() {
               }}
               whileTap={{ scale: 0.95 }}
             >
-              {/* Online indicator */}
-              <div className="absolute -top-2 -right-2 md:-top-2.5 md:-right-2.5 flex items-center gap-1.5 bg-white/95 backdrop-blur-sm px-2 py-1 rounded-full shadow-md">
+              {/* Online indicator - hidden on mobile */}
+              <div className="hidden sm:flex absolute -top-2 -right-2 md:-top-2.5 md:-right-2.5 items-center gap-1.5 bg-white/95 backdrop-blur-sm px-2 py-1 rounded-full shadow-md">
                 <div className="relative flex items-center justify-center">
                   {/* Pulsing dot */}
                   <motion.div
@@ -163,7 +163,7 @@ export default function Hero() {
             
             <motion.a
               href="#diensten"
-              className="inline-flex items-center gap-1.5 md:gap-2 px-4 py-2.5 md:px-8 md:py-4 bg-transparent border-2 border-white/30 text-white rounded-full font-semibold text-sm md:text-lg hover:border-white/60 hover:bg-white/5 transition-all duration-200 flex-1 md:flex-initial justify-center"
+              className="inline-flex items-center gap-1.5 md:gap-2 px-4 py-2.5 md:px-8 md:py-4 bg-transparent border-2 border-white/30 text-white rounded-full font-semibold text-sm md:text-lg hover:border-white/60 hover:bg-white/5 transition-all duration-200 w-full sm:w-auto justify-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

@@ -7,17 +7,17 @@ export const content = {
   hero: {
     headline: "Ik maak verandering werkbaar.",
     subheadline: "Interim HR-professional en teamcoach voor organisaties in de maakindustrie.",
-    description: "Ik stap in wanneer verandering onontkoombaar is. Met nuchter HR-advies, verbindende teamcoaching en resultaatgerichte veranderbegeleiding breng ik structuur in chaos, energie in teams en draagvlak op de werkvloer én in het MT.",
+    description: "Ik stap in wanneer verandering nodig is. Met praktisch HR advies, verbindende teamcoaching en resultaatgerichte veranderbegeleiding breng ik richting, structuur en energie in teams en bouwen we aan draagvlak op alle niveaus.",
     highlights: [
-      "Interim HR-advies bij verzuim, groei of leiderschap",
-      "Teamcoaching die vertrouwen en verantwoordelijkheid vergroot",
-      "Praktische veranderbegeleiding met focus op draagvlak"
+      "Interim HR-advies bij leiderschaps-, en verzuimvraagstukken",
+      "Teamcoaching met focus op vertrouwen en verantwoordelijkheid",
+      "Praktische veranderbegeleiding"
     ]
   },
 
   services: {
     title: "Mijn diensten",
-    description: "Ik help wanneer verandering nodig is, met een nuchtere, verbindende en resultaatgerichte aanpak.",
+    description: "",
     items: [
       {
         title: "Interim HR-advies",
@@ -25,7 +25,7 @@ export const content = {
         icon: "Briefcase"
       },
       {
-        title: "Team coaching en begeleiding",
+        title: "Teamcoaching en begeleiding",
         description: "Teams helpen beter samen te werken, onderling vertrouwen te vergroten en verantwoordelijkheid nemen.",
         icon: "Users"
       },

@@ -14,12 +14,12 @@ export default function About() {
     >
       <div className="max-w-4xl mx-auto text-center">
         <AnimateOnScroll>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
             {content.about.title}
           </h2>
         </AnimateOnScroll>
         <AnimateOnScroll delay={0.1}>
-          <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/90 mb-6 md:mb-8 leading-relaxed max-w-3xl mx-auto px-2">
             {content.about.description}
           </p>
         </AnimateOnScroll>
@@ -33,7 +33,7 @@ export default function About() {
               transition: { duration: 0.3 }
             }}
           >
-            <p className="text-lg text-white font-medium italic">
+            <p className="text-base md:text-lg text-white font-medium italic">
               "{content.about.principle}"
             </p>
           </motion.div>

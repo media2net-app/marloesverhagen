@@ -7,23 +7,23 @@ import { useColor } from '@/app/contexts/ColorContext';
 const features = [
   {
     icon: Briefcase,
-    text: 'Interim HR-advies voor verzuim, groei en leiderschap.',
+    text: 'HR- advies voor leiderschap, groei en verzuim',
   },
   {
     icon: Users,
-    text: 'Teamcoaching die vertrouwen en verantwoordelijkheid vergroot.',
+    text: 'Teamcoaching op mens en proces',
   },
   {
     icon: Target,
-    text: 'Resultaatgerichte veranderbegeleiding met focus op draagvlak.',
+    text: 'Resultaatgerichte veranderbegeleiding',
   },
   {
     icon: Heart,
-    text: 'Verbindende aanpak van werkvloer tot MT.',
+    text: 'Verbindende aanpak',
   },
   {
     icon: Zap,
-    text: 'Nuchter, praktisch en energie brengen in teams.',
+    text: 'Nuchter, praktisch en energiek',
   },
 ];
 
@@ -101,7 +101,7 @@ export default function HeroFeatures() {
                 >
                   <Icon className="w-8 h-8" style={{ color: colorValue }} strokeWidth={1.5} />
                 </div>
-                <p className="text-white/80 text-sm md:text-base leading-relaxed max-w-[200px] md:max-w-none">
+                <p className="text-white/80 text-sm md:text-base leading-relaxed md:max-w-none">
                   {feature.text}
                 </p>
               </motion.div>
